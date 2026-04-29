@@ -3,6 +3,7 @@
 `Bag2RawSync` is a lightweight Python tool for extracting raw multi-sensor data from ROS `.bag` files and generating a same-timeline alignment table.
 
 Chinese documentation: [README.zh-CN.md](README.zh-CN.md)
+Change history: [CHANGELOG.md](CHANGELOG.md)
 
 It is designed for offline workflows such as:
 
@@ -259,3 +260,9 @@ Export all data, save serialized payloads, and generate alignment:
 ```powershell
 python .\scripts\bag2rawsync.py --overwrite --save-serialized --align "D:\data\demo.bag"
 ```
+
+## Versioning
+
+This repository uses lightweight semantic versioning for tool snapshots.
+
+- `v0.1.0`: initial public release of the extraction and alignment workflow
