@@ -266,3 +266,7 @@ python .\scripts\bag2rawsync.py --overwrite --save-serialized --align "D:\data\d
 This repository uses lightweight semantic versioning for tool snapshots.
 
 - `v0.1.0`: initial public release of the extraction and alignment workflow
+
+## License
+
+This project is released under the [MIT License](LICENSE).
