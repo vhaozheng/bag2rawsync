@@ -18,7 +18,11 @@ The tool does not require a full ROS desktop installation. A normal Python envir
 
 ```text
 bag2rawsync/
+  .github/
+    workflows/
+      smoke-test.yml
   .gitignore
+  .gitattributes
   README.md
   requirements.txt
   scripts/
@@ -37,6 +41,7 @@ bag2rawsync/
 - Generate per-topic `manifest.json`
 - Optionally save serialized ROS payloads as `.bin`
 - Optionally generate a same-timeline alignment CSV
+- GitHub Actions smoke-test workflow for dependency install and CLI checks
 
 ## Requirements
 
@@ -68,6 +73,12 @@ You do not need:
 
 ```powershell
 python .\scripts\bag2rawsync.py --list-only "D:\data\demo.bag"
+```
+
+### Show tool version
+
+```powershell
+python .\scripts\bag2rawsync.py --version
 ```
 
 ### Export all raw data

@@ -18,7 +18,11 @@
 
 ```text
 bag2rawsync/
+  .github/
+    workflows/
+      smoke-test.yml
   .gitignore
+  .gitattributes
   README.md
   README.zh-CN.md
   requirements.txt
@@ -38,6 +42,7 @@ bag2rawsync/
 - 为每个 topic 生成 `manifest.json`
 - 可选保存 ROS 原始序列化后的 `.bin`
 - 可选生成统一时间轴对齐结果
+- 自带 GitHub Actions 基础冒烟检查
 
 ## 环境要求
 
@@ -75,25 +80,31 @@ python -m pip install -r .\requirements.txt
 python .\scripts\bag2rawsync.py --list-only "D:\data\demo.bag"
 ```
 
-### 2. 导出全部原始数据
+### 2. 查看工具版本
+
+```powershell
+python .\scripts\bag2rawsync.py --version
+```
+
+### 3. 导出全部原始数据
 
 ```powershell
 python .\scripts\bag2rawsync.py "D:\data\demo.bag"
 ```
 
-### 3. 指定输出目录
+### 4. 指定输出目录
 
 ```powershell
 python .\scripts\bag2rawsync.py --output "D:\output\demo_extract" "D:\data\demo.bag"
 ```
 
-### 4. 覆盖已有输出目录
+### 5. 覆盖已有输出目录
 
 ```powershell
 python .\scripts\bag2rawsync.py --overwrite --output "D:\output\demo_extract" "D:\data\demo.bag"
 ```
 
-### 5. 额外保存原始序列化消息
+### 6. 额外保存原始序列化消息
 
 ```powershell
 python .\scripts\bag2rawsync.py --save-serialized "D:\data\demo.bag"

@@ -16,6 +16,7 @@ import numpy as np
 from rosbags.highlevel import AnyReader
 
 
+VERSION = "0.1.0"
 COMPRESSED_IMAGE = "sensor_msgs/msg/CompressedImage"
 IMU_MSG = "sensor_msgs/msg/Imu"
 NAVSATFIX_MSG = "sensor_msgs/msg/NavSatFix"
@@ -440,6 +441,12 @@ def update_manifest_timestamps(manifest: dict[str, Any], bag_timestamp_ns: int, 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Extract all topic data from a ROS bag without requiring a full ROS installation."
+    )
+    parser.add_argument(
+        "--version",
+        action="version",
+        version=f"%(prog)s {VERSION}",
+        help="Show the tool version and exit.",
     )
     parser.add_argument("bag", type=Path, help="Path to a ROS1/ROS2 bag file.")
     parser.add_argument(
