@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.python-version
+
+*.bag
+*_extracted/
+alignment/
+topics/
+serialized/
+
+.DS_Store
+Thumbs.db
