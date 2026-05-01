@@ -48,6 +48,7 @@ bag2rawsync/
 
 - Python 3.10 或更新版本
 - 推荐在 Windows PowerShell 中运行
+- 支持 Ubuntu/Linux
 
 当前已验证环境：
 
@@ -59,6 +60,12 @@ bag2rawsync/
 
 ```powershell
 python -m pip install -r .\requirements.txt
+```
+
+Ubuntu/Linux 下可以这样安装：
+
+```bash
+python3 -m pip install -r requirements.txt
 ```
 
 依赖只有：
@@ -80,10 +87,22 @@ python -m pip install -r .\requirements.txt
 python .\scripts\bag2rawsync.py --list-only "D:\data\demo.bag"
 ```
 
+Ubuntu/Linux 等价命令：
+
+```bash
+python3 scripts/bag2rawsync.py --list-only /path/to/demo.bag
+```
+
 ### 2. 查看工具版本
 
 ```powershell
 python .\scripts\bag2rawsync.py --version
+```
+
+Ubuntu/Linux 等价命令：
+
+```bash
+python3 scripts/bag2rawsync.py --version
 ```
 
 ### 3. 导出全部原始数据
@@ -92,10 +111,22 @@ python .\scripts\bag2rawsync.py --version
 python .\scripts\bag2rawsync.py "D:\data\demo.bag"
 ```
 
+Ubuntu/Linux 等价命令：
+
+```bash
+python3 scripts/bag2rawsync.py /path/to/demo.bag
+```
+
 ### 4. 指定输出目录
 
 ```powershell
 python .\scripts\bag2rawsync.py --output "D:\output\demo_extract" "D:\data\demo.bag"
+```
+
+Ubuntu/Linux 等价命令：
+
+```bash
+python3 scripts/bag2rawsync.py --output /path/to/output/demo_extract /path/to/demo.bag
 ```
 
 ### 5. 覆盖已有输出目录
@@ -104,10 +135,22 @@ python .\scripts\bag2rawsync.py --output "D:\output\demo_extract" "D:\data\demo.
 python .\scripts\bag2rawsync.py --overwrite --output "D:\output\demo_extract" "D:\data\demo.bag"
 ```
 
+Ubuntu/Linux 等价命令：
+
+```bash
+python3 scripts/bag2rawsync.py --overwrite --output /path/to/output/demo_extract /path/to/demo.bag
+```
+
 ### 6. 额外保存原始序列化消息
 
 ```powershell
 python .\scripts\bag2rawsync.py --save-serialized "D:\data\demo.bag"
+```
+
+Ubuntu/Linux 等价命令：
+
+```bash
+python3 scripts/bag2rawsync.py --save-serialized /path/to/demo.bag
 ```
 
 ## 时间对齐
@@ -118,10 +161,22 @@ python .\scripts\bag2rawsync.py --save-serialized "D:\data\demo.bag"
 python .\scripts\bag2rawsync.py --align "D:\data\demo.bag"
 ```
 
+Ubuntu/Linux 等价命令：
+
+```bash
+python3 scripts/bag2rawsync.py --align /path/to/demo.bag
+```
+
 手动指定主时间轴 topic：
 
 ```powershell
 python .\scripts\bag2rawsync.py --align --align-anchor "/livox/lidar" "D:\data\demo.bag"
+```
+
+Ubuntu/Linux 等价命令：
+
+```bash
+python3 scripts/bag2rawsync.py --align --align-anchor "/livox/lidar" /path/to/demo.bag
 ```
 
 默认主时间轴优先级：
@@ -260,6 +315,25 @@ bag 中通常会出现两类时间：
 - 只有在缺失时才使用 `bag timestamp`
 
 如果不同 topic 不在同一套时间基准上，对齐结果里出现较大的时间差是正常现象，通常说明源数据本身没有完全同步，而不一定是工具错误。
+
+## Ubuntu 使用说明
+
+这个脚本本身使用的是跨平台 Python 库，并且路径处理基于 `pathlib`，所以设计上支持 Ubuntu。
+
+一个典型的 Ubuntu 使用流程如下：
+
+```bash
+python3 -m pip install -r requirements.txt
+python3 scripts/bag2rawsync.py --help
+python3 scripts/bag2rawsync.py --version
+python3 scripts/bag2rawsync.py --align /path/to/demo.bag
+```
+
+说明：
+
+- 不需要安装完整 ROS 桌面环境
+- Ubuntu 下建议使用 `python3`
+- README 里保留了 Windows 示例作为主示例，但工具本身并不依赖 Windows
 
 ## 示例命令
 

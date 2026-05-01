@@ -47,6 +47,7 @@ bag2rawsync/
 
 - Python 3.10 or newer
 - Windows PowerShell is recommended for the examples below
+- Ubuntu/Linux is also supported
 
 Validated locally with Python 3.13.
 
@@ -54,6 +55,12 @@ Validated locally with Python 3.13.
 
 ```powershell
 python -m pip install -r .\requirements.txt
+```
+
+Ubuntu/Linux:
+
+```bash
+python3 -m pip install -r requirements.txt
 ```
 
 Dependencies:
@@ -75,10 +82,22 @@ You do not need:
 python .\scripts\bag2rawsync.py --list-only "D:\data\demo.bag"
 ```
 
+Linux equivalent:
+
+```bash
+python3 scripts/bag2rawsync.py --list-only /path/to/demo.bag
+```
+
 ### Show tool version
 
 ```powershell
 python .\scripts\bag2rawsync.py --version
+```
+
+Linux equivalent:
+
+```bash
+python3 scripts/bag2rawsync.py --version
 ```
 
 ### Export all raw data
@@ -87,10 +106,22 @@ python .\scripts\bag2rawsync.py --version
 python .\scripts\bag2rawsync.py "D:\data\demo.bag"
 ```
 
+Linux equivalent:
+
+```bash
+python3 scripts/bag2rawsync.py /path/to/demo.bag
+```
+
 ### Export to a custom directory
 
 ```powershell
 python .\scripts\bag2rawsync.py --output "D:\output\demo_extract" "D:\data\demo.bag"
+```
+
+Linux equivalent:
+
+```bash
+python3 scripts/bag2rawsync.py --output /path/to/output/demo_extract /path/to/demo.bag
 ```
 
 ### Overwrite an existing output directory
@@ -99,10 +130,22 @@ python .\scripts\bag2rawsync.py --output "D:\output\demo_extract" "D:\data\demo.
 python .\scripts\bag2rawsync.py --overwrite --output "D:\output\demo_extract" "D:\data\demo.bag"
 ```
 
+Linux equivalent:
+
+```bash
+python3 scripts/bag2rawsync.py --overwrite --output /path/to/output/demo_extract /path/to/demo.bag
+```
+
 ### Save serialized ROS messages too
 
 ```powershell
 python .\scripts\bag2rawsync.py --save-serialized "D:\data\demo.bag"
+```
+
+Linux equivalent:
+
+```bash
+python3 scripts/bag2rawsync.py --save-serialized /path/to/demo.bag
 ```
 
 ## Alignment Mode
@@ -113,10 +156,22 @@ Generate a same-timeline alignment table:
 python .\scripts\bag2rawsync.py --align "D:\data\demo.bag"
 ```
 
+Linux equivalent:
+
+```bash
+python3 scripts/bag2rawsync.py --align /path/to/demo.bag
+```
+
 Specify an anchor topic manually:
 
 ```powershell
 python .\scripts\bag2rawsync.py --align --align-anchor "/livox/lidar" "D:\data\demo.bag"
+```
+
+Linux equivalent:
+
+```bash
+python3 scripts/bag2rawsync.py --align --align-anchor "/livox/lidar" /path/to/demo.bag
 ```
 
 Default anchor preference:
@@ -257,6 +312,25 @@ For alignment:
 - `bag timestamp` is only used as fallback
 
 If different topics are not synchronized to the same clock, large time deltas in the alignment CSV are expected. That usually reflects the source data rather than a bug in the tool.
+
+## Ubuntu Notes
+
+The script is expected to work on Ubuntu because it uses cross-platform Python libraries and `pathlib`-based path handling.
+
+Typical Ubuntu workflow:
+
+```bash
+python3 -m pip install -r requirements.txt
+python3 scripts/bag2rawsync.py --help
+python3 scripts/bag2rawsync.py --version
+python3 scripts/bag2rawsync.py --align /path/to/demo.bag
+```
+
+Notes:
+
+- A full ROS desktop installation is not required
+- `python3` is recommended on Ubuntu instead of `python`
+- The repository currently includes Windows-style examples first, but the tool itself is not Windows-only
 
 ## Example Commands
 
